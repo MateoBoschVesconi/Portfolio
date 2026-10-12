@@ -87,7 +87,7 @@ export const projects = [
       "Configuración de pasarelas de pago y píxeles de analítica"
     ],
     tags: ["Tiendanube", "JavaScript", "CSS3", "Pasarelas de Pago", "UX/UI"],
-    url: "https://pldeco.com.ar"
+    url: "https://pldeco.com.uy/"
   },
   {
     id: "deporfan",
