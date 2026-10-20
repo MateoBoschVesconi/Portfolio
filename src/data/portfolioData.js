@@ -147,7 +147,7 @@ export const projects = [
       "Despliegues en arquitecturas limpias y seguras"
     ],
     tags: ["WordPress", "Wix", "JavaScript", "Ciberseguridad", "Arquitectura Web"],
-    url: "https://rusc.com.ar"
+    url: "https://www.clubregatasresistencia.com.ar"
   }
 ];
 
