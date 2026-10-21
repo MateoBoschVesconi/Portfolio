@@ -2,11 +2,11 @@ import React from 'react';
 import { 
   GraduationCap, 
   Award, 
-  Globe, 
   Languages as LanguagesIcon, 
   CheckCircle2, 
-  Sparkles,
-  BookOpen
+  BookOpen,
+  ExternalLink,
+  Sparkles
 } from 'lucide-react';
 import { education, languages } from '../data/portfolioData';
 
@@ -22,59 +22,99 @@ export default function Education() {
             <span>CRECIMIENTO CONTINUO</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#EFF7F6] tracking-tight mb-4">
-            Educación & <span className="text-gradient">Idiomas</span>
+            Educación & <span className="text-gradient">Certificaciones</span>
           </h2>
           <p className="text-[#EFF7F6]/70 text-base leading-relaxed">
-            Formación académica universitaria en programación y dominio de idiomas para interactuar en entornos locales e internacionales.
+            Formación universitaria sólida, certificaciones oficiales acreditadas en desarrollo web y comercio electrónico, y dominio de idiomas para entornos de alto rendimiento.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* Left Column: Education (7 cols) */}
+          {/* Left Column: Education & Certifications (7 cols) */}
           <div className="lg:col-span-7 space-y-4">
-            <h3 className="text-lg font-bold text-[#EFF7F6] flex items-center gap-2 mb-4">
-              <BookOpen className="w-5 h-5 text-[#9A031E]" />
-              <span>Formación Académica & Certificaciones</span>
-            </h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-[#EFF7F6] flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-[#9A031E]" />
+                <span>Formación Académica & Certificaciones</span>
+              </h3>
+            </div>
 
-            {education.map((item, idx) => (
-              <div
-                key={idx}
-                className="glass-card rounded-2xl p-6 border border-[#EFF7F6]/10 hover:border-[#9A031E]/40 transition-all flex flex-col sm:flex-row gap-5 items-start"
-              >
-                <div className="w-12 h-12 rounded-xl bg-[#9A031E]/15 border border-[#9A031E]/30 text-[#9A031E] flex items-center justify-center shrink-0">
-                  {item.icon === 'GraduationCap' ? (
-                    <GraduationCap className="w-6 h-6" />
-                  ) : (
-                    <Award className="w-6 h-6" />
-                  )}
-                </div>
+            {education.map((item, idx) => {
+              const isClickable = Boolean(item.hasCertificate && item.certificatePdf);
 
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-                    <span className="text-xs font-mono text-[#EFF7F6] font-semibold px-2.5 py-0.5 rounded-full bg-[#9A031E]/15 border border-[#9A031E]/30">
-                      {item.status}
-                    </span>
-                    <span className="text-xs font-mono text-[#EFF7F6]/50">
-                      {item.period}
-                    </span>
+              const CardContent = (
+                <>
+                  {/* Icon badge */}
+                  <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 transition-all ${
+                    isClickable 
+                      ? 'bg-[#9A031E]/15 border-[#9A031E]/30 text-[#9A031E] group-hover:bg-[#9A031E] group-hover:text-[#EFF7F6] group-hover:scale-105' 
+                      : 'bg-[#9A031E]/15 border-[#9A031E]/30 text-[#9A031E]'
+                  }`}>
+                    {item.icon === 'GraduationCap' ? (
+                      <GraduationCap className="w-6 h-6" />
+                    ) : (
+                      <Award className="w-6 h-6" />
+                    )}
                   </div>
 
-                  <h4 className="text-lg font-bold text-[#EFF7F6] mb-1">
-                    {item.degree}
-                  </h4>
-                  
-                  <p className="text-sm font-semibold text-[#EFF7F6]/80 mb-2">
-                    {item.institution}
-                  </p>
+                  <div className="flex-1 w-full min-w-0">
+                    {/* Status & Period pill row */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                      <span className="text-xs font-mono text-[#EFF7F6] font-semibold px-2.5 py-0.5 rounded-full bg-[#9A031E]/15 border border-[#9A031E]/30 flex items-center gap-1.5">
+                        {isClickable && <Sparkles className="w-3 h-3 text-[#9A031E]" />}
+                        <span>{item.status}</span>
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono text-[#EFF7F6]/50">
+                          {item.period}
+                        </span>
+                        {isClickable && (
+                          <span className="text-xs text-[#EFF7F6]/40 group-hover:text-[#9A031E] transition-colors" title="Abrir PDF en nueva pestaña">
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </span>
+                        )}
+                      </div>
+                    </div>
 
-                  <p className="text-xs sm:text-sm text-[#EFF7F6]/70 leading-relaxed">
-                    {item.description}
-                  </p>
+                    {/* Degree / Certificate Title */}
+                    <h4 className="text-lg font-bold text-[#EFF7F6] mb-1 group-hover:text-gradient transition-colors">
+                      {item.degree}
+                    </h4>
+                    
+                    {/* Institution */}
+                    <p className="text-sm font-semibold text-[#EFF7F6]/80 mb-2">
+                      {item.institution}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-xs sm:text-sm text-[#EFF7F6]/70 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </>
+              );
+
+              return isClickable ? (
+                <a
+                  key={item.id || idx}
+                  href={item.certificatePdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Abrir certificado de ${item.degree} (PDF) en una nueva pestaña`}
+                  className="glass-card rounded-2xl p-6 border transition-all flex flex-col sm:flex-row gap-5 items-start block border-[#EFF7F6]/10 hover:border-[#9A031E]/60 hover:bg-[#0C1618]/95 cursor-pointer group shadow-sm hover:shadow-glow-crimson focus:outline-none focus:ring-2 focus:ring-[#9A031E]/60 text-inherit no-underline"
+                >
+                  {CardContent}
+                </a>
+              ) : (
+                <div
+                  key={item.id || idx}
+                  className="glass-card rounded-2xl p-6 border transition-all flex flex-col sm:flex-row gap-5 items-start border-[#EFF7F6]/10"
+                >
+                  {CardContent}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Right Column: Languages & Communication (5 cols) */}

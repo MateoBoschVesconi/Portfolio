@@ -187,20 +187,50 @@ export const skillsData = {
 
 export const education = [
   {
+    id: "utn-programacion",
     institution: "Universidad Tecnológica Nacional (UTN) FRRE",
     degree: "Tecnicatura Universitaria en Programación",
     period: "Marzo 2024 – Presente",
     status: "En curso",
     description: "Formación académica sólida en fundamentos de desarrollo de software, algoritmos, estructuras de datos, programación orientada a objetos y bases de datos.",
-    icon: "GraduationCap"
+    icon: "GraduationCap",
+    hasCertificate: false
   },
   {
+    id: "coderhouse-web",
     institution: "Coderhouse",
     degree: "Curso de Desarrollo Web",
-    period: "Completado",
-    status: "Certificado",
-    description: "Especialización práctica en tecnologías front-end, HTML5, CSS3, maquetación responsive, flexbox, CSS Grid y estándares web.",
-    icon: "Award"
+    period: "Julio 2025 · 38 hrs",
+    status: "Certificado · Top 10",
+    description: "Especialización práctica en tecnologías front-end, HTML5, CSS3, maquetación responsive, flexbox, CSS Grid y estándares web modernos.",
+    icon: "Award",
+    hasCertificate: true,
+    certificatePdf: "/certificates/coderhouse-desarrollo-web.pdf",
+    certificateImage: "/certificates/coderhouse-desarrollo-web.png",
+    certificateDetails: {
+      badge: "Top 10 de la camada",
+      date: "18 de Julio de 2025",
+      issuer: "Coderhouse",
+      certifiedBy: "PedidosYa & Geopagos",
+      duration: "38 horas / 10 semanas"
+    }
+  },
+  {
+    id: "tiendanube-partner",
+    institution: "Tiendanube",
+    degree: "Tiendanube Partner Desarrollador",
+    period: "Certificación Oficial",
+    status: "Partner Oficial",
+    description: "Certificación oficial que acredita mi dominio integral de todo el ecosistema de Tiendanube como desarrollador. Especialista en la arquitectura técnica de tiendas online, personalización avanzada de código a medida (HTML/CSS/JS), integración de aplicaciones, pasarelas de pago, logística automatizada y optimización para máxima conversión y velocidad.",
+    icon: "Award",
+    hasCertificate: true,
+    certificatePdf: "/certificates/tiendanube-partner-desarrollador.pdf",
+    certificateImage: "/certificates/tiendanube-partner-desarrollador.png",
+    certificateDetails: {
+      badge: "Partner Desarrollador Oficial",
+      issuer: "Tiendanube Partners",
+      scope: "Ecosistema integral Tiendanube, código a medida, integraciones y UX e-commerce"
+    }
   }
 ];
 
